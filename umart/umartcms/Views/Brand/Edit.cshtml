@@ -1,0 +1,98 @@
+﻿@model umartcms.Models.BrandViewModel
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/layoutcms.cshtml";
+}
+
+
+<header class="page-header">
+    <h2>Brand</h2>
+    <div class="col-md-2">
+        <a href="@Url.Action("Create")" class="btn btn-success btn-blue btn-block"><span class="fa fa-plus"></span>New Brand</a>
+    </div>
+</header>
+
+<div class="row">
+    <div class="col-lg-12">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            <section class="panel">
+                <header class="panel-heading">
+                    <h2 class="panel-title">@ViewBag.Title</h2>
+                </header>
+                <div class="panel-body">
+                    @Html.HiddenFor(model => model.EncId)
+
+                    <div class="form-group">
+                        @Html.Label("Brand Name", new { @class = "col-md-3 col-xs-12 control-label" })
+                        <div class="col-md-6 col-xs-12">
+                            @Html.TextBoxFor(model => model.BrandName, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.BrandName)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.Label("Brand Code", new { @class = "col-md-3 col-xs-12 control-label" })
+                        <div class="col-md-6 col-xs-12">
+                            @Html.TextBoxFor(model => model.BrandCode, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.BrandCode)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.Label("Brand Icon", new { @class = "col-md-3 col-xs-12 control-label" })
+                        <div class="col-md-6 col-xs-12">
+                            @Html.TextBoxFor(model => model.BrandIcon, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.BrandIcon)
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.Label("Category Name", new { @class = "col-md-3 col-xs-12 control-label" })
+                        <div class="col-md-6 col-xs-12">
+                            @Html.TextBoxFor(model => model.CategoryName, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.CategoryName)
+                        </div>
+                    </div>
+
+
+
+                    @*<div class="form-group">
+                            @Html.LabelFor(model => model.DisplayOrder, new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.DisplayOrder)
+                                @Html.ValidationMessageFor(model => model.DisplayOrder)
+                            </div>
+                        </div>*@
+
+
+                </div>
+                <div class="panel-footer">
+                    <a href=@Url.Action("Index")><span class="fa fa-angle-left"></span> Back To List</a>
+                    <input type="submit" name="Update" value="Update" class="btn btn-success btn-blue pull-right" />
+                </div>
+            </section>
+        }
+    </div>
+</div>
+<script type="text/javascript">
+    //Alert notification for model Error.
+    @if (!ViewContext.ViewData.ModelState.IsValid)
+    {
+        var sb = new System.Text.StringBuilder();
+        foreach (var modelState in ViewContext.ViewData.ModelState.Values)
+        {
+            foreach (var error in modelState.Errors)
+            {
+                sb.Append(error.ErrorMessage);
+            }
+        }
+        @:sweetAlertInitialize(); swal({ title: "", text: '@sb.ToString()' });
+                                            }
+</script>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+
