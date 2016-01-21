@@ -77,7 +77,7 @@ namespace Business
                 //brand.RegionID = Convert.ToInt32(GlobalUser.getGlobalUser().RegionID);
                 //brand.DisplayOrder = 1;
                 //brand.VersionDataID = vid;
-                //brand.VersionAction = action;
+                //brand.VersionAction = action;nbkhikihikhihioiho
                 if (action == "I")
                 {
                     Insert(brand);
