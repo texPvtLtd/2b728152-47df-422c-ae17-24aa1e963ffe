@@ -6,7 +6,9 @@
 }
 <header class="page-header">
     <h2>Category</h2>
-   
+    <div class="col-md-2">
+        <a href="@Url.Action("Create")" class="btn btn-success btn-blue btn-block"><span class="fa fa-plus"></span>New Category</a>
+    </div>
     @*<div class="right-wrapper pull-right">
             <ol class="breadcrumbs">
                 <li>
@@ -96,8 +98,19 @@
                             </tr>
                         </tbody>*@
                     </table>
+                    <input id="row" placeholder="Enter Item Name" /><button id="irow">Insert Row</button><br /><br />
                 </div>
             </div>
         </section>
     </div>
 </div>
+
+<script>
+    $('#irow').click(function () {
+        if ($('#row').val()) {
+            $('#mtable tbody').append($("#mtable tbody tr:last").clone());
+            $('#mtable tbody tr:last :checkbox').attr('checked', false);
+            $('#mtable tbody tr:last td:first').html($('#row').val());
+        } else { alert('Enter Text'); }
+    });
+</script>

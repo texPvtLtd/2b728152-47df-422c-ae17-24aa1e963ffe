@@ -68,8 +68,9 @@ namespace umartcms.Controllers
                 //    TempData["isSuccess"] = "false";
                 //    return RedirectToAction("Index");
                 //}
-                //else
+                else
                 {
+                    category.EncId = Md5Encryption.Encrypt(category.CategoryId.ToString());
                     bool isSuccess = _categoryBusiness.AddUpdateDeleteCategory(category, "I");
                     if (isSuccess)
                     {

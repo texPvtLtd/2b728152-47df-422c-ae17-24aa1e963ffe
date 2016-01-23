@@ -70,7 +70,7 @@ namespace umartcms.Controllers
                 //    TempData["isSuccess"] = "false";
                 //    return RedirectToAction("Index");
                 //}
-                //else
+                else
 
                 {
                     brand.EncId = Md5Encryption.Encrypt(brand.BrandId.ToString());
