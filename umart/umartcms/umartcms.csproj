@@ -197,6 +197,7 @@
     <Compile Include="Controllers\OrderDetailsController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Controllers\webController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -260,6 +261,7 @@
     <Content Include="Content\eshopper\Images\home\lo.png" />
     <Content Include="Content\eshopper\Images\home\logo.jpg" />
     <Content Include="Content\eshopper\Images\home\logo.png" />
+    <Content Include="Content\eshopper\Images\home\logos.gif" />
     <Content Include="Content\eshopper\Images\home\map.png" />
     <Content Include="Content\eshopper\Images\home\new.png" />
     <Content Include="Content\eshopper\Images\home\partner1.png" />
@@ -455,6 +457,9 @@
     <Content Include="Views\Product\Create.cshtml" />
     <Content Include="Views\Customer\Index.cshtml" />
     <Content Include="Views\AddtoCart\Index.cshtml" />
+    <Content Include="Views\Shared\WebsiteLayout.cshtml" />
+    <Content Include="Views\web\Index.cshtml" />
+    <Content Include="Views\web\_categoryList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
