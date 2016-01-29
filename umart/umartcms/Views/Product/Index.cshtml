@@ -1,0 +1,87 @@
+﻿@model IEnumerable<Entities.Models.Product>
+
+@using Common.Cryptography;
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/layoutcms.cshtml";
+}
+
+<header class="page-header">
+    <h2>Brands</h2>
+    <div class="col-md-2">
+        <a href="@Url.Action("Create")" class="btn btn-success btn-blue btn-block"><span class="fa fa-plus"></span>New Product</a>
+    </div>
+
+    @*<div class="right-wrapper pull-right">
+            <ol class="breadcrumbs">
+                <li>
+                    <a href="index.html">
+                        <i class="fa fa-home"></i>
+                    </a>
+                </li>
+                <li><span>Tables</span></li>
+                <li><span>Basic</span></li>
+            </ol>
+
+        </div>*@
+</header>
+
+<div class="row">
+
+    <div class="col-md-12">
+        <section class="panel">
+            <header class="panel-heading">
+
+                <h2 class="panel-title">Brands</h2>
+
+            </header>
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <table class="table table-hover mb-none">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>ProductName</th>
+                                <th>ProductCode</th>
+                                <th>Price</th>
+                                <th>Brand Name</th>
+                           
+                                <th>Category Name</th>
+                                <th>
+                                    Brand Icon
+                                </th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@Md5Encryption.Encrypt(item.CategoryId.ToString())</td>
+
+                                    <td>@Html.DisplayFor(modelItem => item.ProductName)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.ProductCode)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.Price)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.Brand.BrandName)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.Category.CategoryName)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.ProductCode)</td>
+                                    <td class="actions-hover actions-fade">
+                                        <a href='@Url.Action("Edit", "Product", new { Id = Md5Encryption.Encrypt(item.BrandId.ToString()) })'><i class="fa fa-pencil"></i></a>
+                                        <a href=@Url.Action("Delete") class="delete-row"><i class="fa fa-trash-o"></i></a>
+                                    </td>
+
+                                    @*<td id="action-row">
+                                            <a id="lnkEdit" href='@Url.Action("Edit", "Brand", new { Id = Md5Encryption.Encrypt(item.BrandID.ToString()) })' class="icons edit" data-toggle="tooltip" data-placement="left" data-original-title="Edit"><span class="glyphicon glyphicon-edit"></span> </a>
+                                            <a id='lnkDelete' data='@Md5Encryption.Encrypt(item.BrandID.ToString())' class="icons" data-toggle="tooltip" data-original-title="Delete" data-placement="top"><span class="glyphicon glyphicon-remove"></span></a>
+
+                                        </td>*@
+                                </tr>
+                            }
+                        <tbody>
+                           
+                    </table>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>

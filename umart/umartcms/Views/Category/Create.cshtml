@@ -1,0 +1,86 @@
+﻿@model umartcms.Models.CategoryViewModel
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/layoutcms.cshtml";
+}
+
+<header class="page-header">
+    <h2>Category</h2>
+    <div class="col-md-2">
+        <a href="@Url.Action("Create")"  class="btn btn-success btn-blue btn-block"><span class="fa fa-plus"></span>New Category</a>
+    </div>
+</header>
+<div class="row">
+    <div class="col-lg-12">
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+        <section class="panel">
+            <header class="panel-heading">
+                <h2 class="panel-title">@ViewBag.Title</h2>
+            </header>
+            <div class="panel-body">
+
+               
+                       
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label">Category Name</label>
+                                        <div class="col-md-6">
+                                            @Html.TextBoxFor(model => model.CategoryName, new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(model => model.CategoryName)
+                                          
+                                        </div>
+                                       
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label">Category Code</label>
+                                        <div class="col-md-6">
+                                            @Html.TextBoxFor(model => model.CategoryCode, new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(model => model.CategoryCode)
+                                        </div>
+                                    </div>
+
+
+
+
+                                    @*<div class="form-group">
+                                            @Html.Label("Display Order", new { @class = "col-md-3 col-xs-12 control-label" })
+                                            <div class="col-md-6 col-xs-12">
+                                                @Html.EditorFor(model => model.DisplayOrder)
+                                                @Html.ValidationMessageFor(model => model.DisplayOrder)
+                                            </div>
+                                        </div>*@
+                 
+
+                                </div>
+                                <div class="panel-footer">
+                                    <a href=@Url.Action("Index")><span class="fa fa-angle-left"></span> Back To List</a>
+                                    <button class="btn btn-success btn-blue pull-right">CREATE</button>
+                                </div>
+    </section>
+}
+                            </div>
+                        </div>
+         
+
+<script src="@Url.Content("~/Scripts/bootstrap-select.js")"></script>
+
+<script type="text/javascript">
+    //Alert notification for model Error.
+         @if (!ViewContext.ViewData.ModelState.IsValid)
+        {
+            var sb = new System.Text.StringBuilder();
+            if (ViewContext.ViewData.ModelState["Alert"] != null)
+            {
+                foreach (var error in ViewContext.ViewData.ModelState["Alert"].Errors)
+                {
+                    sb.Append(error.ErrorMessage);
+                }
+                 @:sweetAlertInitialize(); swal({ title: "", text: '@sb.ToString()' });
+                    }
+            }
+</script>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
